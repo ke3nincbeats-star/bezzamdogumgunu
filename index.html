@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İyikiii dogdunnnn hayatımın anlamııı🤍</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#ffd6f3,#cbb7ff,#a6d0ff);
+  background-size:300% 300%;
+  animation:bg 12s ease infinite;
+  font-family:'Poppins',sans-serif;
+  overflow:hidden;
+}
+
+@keyframes bg{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+.card{
+  background:rgba(255,255,255,0.35);
+  backdrop-filter:blur(14px);
+  border-radius:26px;
+  padding:32px;
+  max-width:340px;
+  text-align:center;
+  box-shadow:0 25px 50px rgba(0,0,0,.2);
+  z-index:2;
+}
+
+h1{
+  font-family:'Playfair Display',serif;
+  color:#5b2b82;
+  font-size:2.2em;
+  margin-bottom:10px;
+}
+
+p{
+  color:#333;
+  margin-bottom:20px;
+}
+
+button{
+  border:none;
+  padding:14px 30px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#ff7ac8,#8f7bff);
+  color:#fff;
+  font-size:1em;
+  cursor:pointer;
+  box-shadow:0 8px 18px rgba(0,0,0,.25);
+}
+
+button:active{transform:scale(.95)}
+
+#secret{
+  display:none;
+  margin-top:18px;
+  color:#4a235a;
+  font-size:.95em;
+}
+
+#cat{
+  display:none;
+  margin-top:15px;
+}
+
+#cat img{
+  width:160px;
+  border-radius:18px;
+}
+
+.particle{
+  position:absolute;
+  top:-20px;
+  pointer-events:none;
+  animation:fall linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(360deg);
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>iyi ki doğdun güzelimmmmm 💖</h1>
+  <p>Hayat seninle cokkkk guzelll <br>Ennn guzel iyikimm muwahhh</p>
+
+  <button onclick="celebrate()">Banaa bass:3</button>
+
+  <div id="secret">
+    eger bunu okumak yapiyosan<br>
+    unutma men seni hayatimin sonuna kadar coooooookkksevicemm 💗
+  </div>
+
+  <div id="cat">
+    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbjVicHBhYW95cG03ZXhzdjAxd3VyeTZvZjZvbDU0anltc29keXVldyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ytu2GUYbvhz7zShGwS/giphy.gif">
+  </div>
+</div>
+
+<audio id="music">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let click = 0;
+let opened = false;
+
+function celebrate(){
+  click++;
+
+  // HER BASIŞTA EFEKT
+  for(let i=0;i<30;i++) particle();
+
+  // MÜZİK SADECE İLK BASIŞTA
+  if(click === 1){
+    document.getElementById("music").play();
+  }
+
+  // GİZLİ MESAJ + KEDİ SADECE 1 KERE
+  if(click >= 2 && !opened){
+    document.getElementById("secret").style.display = "block";
+    document.getElementById("cat").style.display = "block";
+    opened = true;
+  }
+}
+
+function particle(){
+  const p=document.createElement("div");
+  p.className="particle";
+  p.innerHTML=Math.random()>0.5?"💖":"🎉";
+  p.style.left=Math.random()*100+"vw";
+  p.style.fontSize=(Math.random()*18+16)+"px";
+  p.style.animationDuration=(Math.random()*3+3)+"s";
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),6000);
+}
+</script>
+
+</body>
+</html>
